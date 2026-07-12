@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank App Part 3</title>
+</head>
+<body>
+
+    <h1>Bank App</h1>
+
+    <label>Current Balance:</label>
+    <input type="number" id="balance"><br><br>
+
+    <label>Amount:</label>
+    <input type="number" id="amount"><br><br>
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function deposit() {
+            let balance = Number(document.getElementById("balance").value);
+            let amount = Number(document.getElementById("amount").value);
+
+            balance = balance + amount;
+
+            document.getElementById("balance").value = balance;
+            document.getElementById("result").innerHTML =
+                "Deposit successful.<br>New Balance: $" + balance;
+        }
+
+        function withdraw() {
+            let balance = Number(document.getElementById("balance").value);
+            let amount = Number(document.getElementById("amount").value);
+
+            if (amount > balance) {
+                document.getElementById("result").innerHTML =
+                    "Insufficient funds!";
+            } else {
+                balance = balance - amount;
+                document.getElementById("balance").value = balance;
+                document.getElementById("result").innerHTML =
+                    "Withdrawal successful.<br>New Balance: $" + balance;
+            }
+        }
+    </script>
+
+</body>
+</html>
